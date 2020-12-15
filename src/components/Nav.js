@@ -14,10 +14,7 @@ const useStyle = makeStyles({
 const Nav = ({nav})=>{
     const classes = useStyle()
     return(
-        <div className={nav}>
-            <div className={classes.title}>スケジュール管理アプリ</div>
-            <div className={classes.date}>Today:日付(曜日)</div>
-        </div>
+        <div>Nav</div>
     )
 }
 
