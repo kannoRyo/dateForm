@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{useState,useReducer} from 'react'
 import { makeStyles } from '@material-ui/core'
+
+import reducer from '../reducer/schedules'
 
 import Nav from './Nav'
 import ScheduleBoard from './ScheduleBoard'
-import InputSchedule from './InputSchedule'
+import InputSchedule from "./InputSchedule"
 
 const useStyles = makeStyles({
   root:{
@@ -33,6 +35,8 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles()
+  const [state, dispatch] = useReducer(reducer, [])
+
   return (
     <div className={classes.root}>
       <Nav nav={classes.nav}/>
