@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
     ADD_SCHEDULE,
     DELETE_SCHEDULE,
@@ -8,8 +7,8 @@ import {
 const schedules = (state =[],action) =>{
     switch(action.type){
         case ADD_SCHEDULE:
-            const schedule = {date: action.title ,title: action.title ,description: action.description}
-            const id = state.length === 0 ? 1 : state.length.id + 1
+            const schedule = {date: action.date ,time: action.time ,title: action.title ,description: action.description}
+            const id = state.length === 0 ? 1 : state.length + 1
             return [...state, {id: id, ...schedule}]
         case DELETE_SCHEDULE:
             break

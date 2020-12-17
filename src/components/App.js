@@ -1,5 +1,6 @@
-import React,{useState,useReducer} from 'react'
+import React,{useReducer, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core'
+import {ADD_SCHEDULE} from '../action/index'
 
 import reducer from '../reducer/schedules'
 
@@ -11,7 +12,7 @@ const useStyles = makeStyles({
   root:{
     display:"grid",
     height:'100vh',
-    width:'70%',
+    width:'75%',
     margin:'0 auto',
     gridTemplateRows:'70px 1fr',
     gridTemplateColumns:'60% 40%'
@@ -36,12 +37,24 @@ const useStyles = makeStyles({
 function App() {
   const classes = useStyles()
   const [state, dispatch] = useReducer(reducer, [])
+  console.log(state)
+
+  useEffect(()=>{
+    dispatch({
+      type: ADD_SCHEDULE,
+      date: "2020-12-10",
+      time: "time",
+      title: 'title',
+      description: 'description'
+  })    
+  },[])
+
 
   return (
     <div className={classes.root}>
       <Nav nav={classes.nav}/>
-      <ScheduleBoard scheduleBoard={classes.scheduleBoard}/>
-      <InputSchedule inputSchedule={classes.InputSchedule}/>
+      <ScheduleBoard scheduleBoard={classes.scheduleBoard} state={state}/>
+      <InputSchedule inputSchedule={classes.InputSchedule}  dispatch={dispatch} />
     </div>
   );
 }
