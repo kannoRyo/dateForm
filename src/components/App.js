@@ -64,7 +64,7 @@ function App() {
     <div className={classes.root}>
       <Nav nav={classes.nav}/>
       <ScheduleBoard scheduleBoard={classes.scheduleBoard}  dispatch={dispatch} state={state} board={classes.board}/>
-      <InputSchedule inputSchedule={classes.InputSchedule}  dispatch={dispatch} />
+      <InputSchedule inputSchedule={classes.InputSchedule}  dispatch={dispatch} state={state}/>
     </div>
   );
 }

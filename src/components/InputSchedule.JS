@@ -93,9 +93,9 @@ const Inputschedule = ({inputschedule,dispatch,state})=>{
             <InputTitle inputTitle={classes.inputTitle} title={title} handleTitle={(e)=>handleTitle(e)}/>
             <InputDescription inputDescription={classes.inputDescription} description={description} handleDescription={(e)=>handleDescription(e)}/>
 
-            <br/><Button onClick={(e)=> submitSchedule(e)} variant="contained"  color="primary">送信</Button>
+            <br/><Button onClick={(e)=> submitSchedule(e)} variant="contained"  color="primary" disabled={!(date && time && title)}>送信</Button>
         </form>       
-        <Button onClick={(e)=>deleteAllShedules(e)} style={{width:'100%',height:'40px' ,margin:'30px 0'}} color="secondary" variant="contained">全部のスケジュールを削除する</Button>
+        <Button onClick={(e)=>deleteAllShedules(e)} style={{width:'100%',height:'40px' ,margin:'30px 0'}} color="secondary" variant="contained" disabled={!(state.length)}>全部のスケジュールを削除する</Button>
         </div>
     )
 }
