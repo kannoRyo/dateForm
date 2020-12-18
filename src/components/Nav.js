@@ -1,16 +1,22 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
+import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 const dayjs = require('dayjs')
 
 const useStyle = makeStyles({
+    icon:{
+        color:'black',
+        lineHeight: '6',
+    },
     title:{
         fontFamily: 'Noto Sans JP',
-        fontSize:'25px'
+        fontSize:'25px',
+        marginRight:'20px'
     },
     date:{
-        marginRight:'20%',
+        // marginRight:'20%',
         fontFamily: 'Sawarabi Gothic',
-        fontSize:'22px'
+        fontSize:'25px'
     }
 })
 
@@ -23,7 +29,12 @@ const Nav = ({nav})=>{
 
     return(
         <div className={nav}>
-            <div className={classes.title}>スケジュール管理アプリ</div>
+            <div className={classes.icon}>
+            <AssignmentOutlinedIcon fontSize="large"/>
+            </div>
+            <div className={classes.title}>
+                スケジュール管理アプリ
+            </div>
             <div className={classes.date}>Today: {`${month}月${date}日 （${dayStr[day]}）`}</div>
         </div>
     )

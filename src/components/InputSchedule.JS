@@ -15,6 +15,13 @@ const useStyles = makeStyles((theme) => ({
         display:'flex',
         flexDirection:'column'
     },
+    inputscheduleCover:{
+        height:'auto',
+        padding:'20px',
+        borderRadius:'32px',
+        border: '2px solid#454545',
+
+    },
     textFieldDate: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
@@ -33,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const Inputschedule = ({inputschedule,dispatch,state})=>{
+const Inputschedule = ({inputSchedule,dispatch,state})=>{
     const classes = useStyles()
     const [date,setDate] = useState('')
     const [time, setTime] = useState('')
@@ -85,7 +92,8 @@ const Inputschedule = ({inputschedule,dispatch,state})=>{
     }
 
     return(
-        <div className={inputschedule}>
+        <div className={inputSchedule}>
+        <div className={classes.inputscheduleCover}>
         <h3>Schedule作成</h3>
         <form className={classes.container}  onSubmit={(e)=> submitSchedule(e)} noValidate >     
             <DatePicker textFieldDate={classes.textFieldDate}　date={date} handleDate={(e)=>handleDate(e)}/>
@@ -96,6 +104,7 @@ const Inputschedule = ({inputschedule,dispatch,state})=>{
             <br/><Button onClick={(e)=> submitSchedule(e)} variant="contained"  color="primary" disabled={!(date && time && title)}>送信</Button>
         </form>       
         <Button onClick={(e)=>deleteAllShedules(e)} style={{width:'100%',height:'40px' ,margin:'30px 0'}} color="secondary" variant="contained" disabled={!(state.length)}>全部のスケジュールを削除する</Button>
+        </div>
         </div>
     )
 }
