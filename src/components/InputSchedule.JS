@@ -1,6 +1,6 @@
 import React ,{useState}from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import {ADD_SCHEDULE} from '../action/index'
+import {ADD_SCHEDULE, } from '../action/index'
 
 import DatePicker from './DatePicker'
 import Timepicker from './TimePicker'

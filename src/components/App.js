@@ -1,12 +1,14 @@
 import React,{useReducer, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core'
-import {ADD_SCHEDULE} from '../action/index'
 
 import reducer from '../reducer/schedules'
+import{ADD_SCHEDULE} from '../action/index'
 
 import Nav from './Nav'
 import ScheduleBoard from './ScheduleBoard'
 import InputSchedule from "./InputSchedule"
+
+const dayjs = require('dayjs')
 
 const useStyles = makeStyles({
   root:{
@@ -31,29 +33,34 @@ const useStyles = makeStyles({
   inputSchedule:{
     gridRow: "2/3",
     gridColumn: "2/3"
+  },
+  board:{
+    width: '200px',
+    height: '100px',
+    padding: '10px',
+    backgroundColor: '#61C359',
   }
 })
 
 function App() {
   const classes = useStyles()
   const [state, dispatch] = useReducer(reducer, [])
-  console.log(state)
+  // console.log(state)
 
   useEffect(()=>{
     dispatch({
       type: ADD_SCHEDULE,
-      date: "2020-12-10",
-      time: "time",
+      date: dayjs().format('YYYY-MM-DD'),
+      time: '12-12',
       title: 'title',
       description: 'description'
-  })    
+    })
   },[])
-
 
   return (
     <div className={classes.root}>
       <Nav nav={classes.nav}/>
-      <ScheduleBoard scheduleBoard={classes.scheduleBoard} state={state}/>
+      <ScheduleBoard scheduleBoard={classes.scheduleBoard}  dispatch={dispatch} state={state} board={classes.board}/>
       <InputSchedule inputSchedule={classes.InputSchedule}  dispatch={dispatch} />
     </div>
   );
