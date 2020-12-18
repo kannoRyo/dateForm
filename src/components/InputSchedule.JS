@@ -1,6 +1,8 @@
 import React ,{useState}from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import {ADD_SCHEDULE, } from '../action/index'
+import {
+    ADD_SCHEDULE, DELETE_ALL_SCHEDULS
+} from '../action/index'
 
 import DatePicker from './DatePicker'
 import Timepicker from './TimePicker'
@@ -70,6 +72,14 @@ const Inputschedule = ({inputschedule,dispatch,state})=>{
         // console.log(e.target.value)
     }
 
+    const deleteAllShedules = (e)=>{
+        e.preventDefault()
+
+        dispatch({
+            type:DELETE_ALL_SCHEDULS
+        })
+    }
+
     return(
         <div className={inputschedule}>
         <h3>Schedule作成</h3>
@@ -81,6 +91,7 @@ const Inputschedule = ({inputschedule,dispatch,state})=>{
 
             <br/><button>送信</button>
         </form>       
+        <button onClick={(e)=>deleteAllShedules(e)} style={{width:'100%',height:'30px' ,margin:'30px 0'}}>全部のスケジュールを削除する</button>
         </div>
     )
 }

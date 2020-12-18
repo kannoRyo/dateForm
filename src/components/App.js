@@ -37,7 +37,10 @@ const useStyles = makeStyles({
   board:{
     width: '200px',
     height: '100px',
-    padding: '10px',
+    margin:'20px',
+    padding:'12px',
+    display:'flex',
+    justifyContent:'space-between',
     backgroundColor: '#61C359',
   }
 })

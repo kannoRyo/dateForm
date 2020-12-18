@@ -45,11 +45,14 @@ const schedules = (state =[],action) =>{
             })
             return state
         case DELETE_SCHEDULE:
-            break
+            state = state.filter((schedule)=>{
+                return schedule.id !== action.id
+            }) 
+            return state
         case DELETE_ALL_SCHEDULS:
-            break
-        default:
             return state=[]
+        default:
+            return state
     }
 }
 
