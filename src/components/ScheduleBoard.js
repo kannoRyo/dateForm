@@ -1,19 +1,7 @@
-import React ,{useEffect}from 'react'
+import React from 'react'
 import ScheduleElement from './ScheduleElement'
-import {
-    SORT_SCHEDULE,
-} from '../action'
 
 const ScheduleBoard = ({scheduleBoard,state,dispatch,board})=>{
-    useEffect(()=>{
-        dispatch({
-            type: SORT_SCHEDULE
-        })
-    },)
-    console.log(state)
-
-
-
     return(
         <>
         <div className={scheduleBoard} Align="center">
@@ -23,7 +11,7 @@ const ScheduleBoard = ({scheduleBoard,state,dispatch,board})=>{
                 ?
                     state.map((schedule,i)=>{
                         return(
-                            <ScheduleElement  schedule={schedule} board={board} key={i} dispatch={dispatch}/>
+                            <ScheduleElement  schedule={schedule} board={board} key={i} dispatch={dispatch} />
                         )
                     })
                 :

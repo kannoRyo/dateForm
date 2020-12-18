@@ -1,5 +1,6 @@
 import React ,{useState}from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import {Button} from '@material-ui/core'
 import {
     ADD_SCHEDULE, DELETE_ALL_SCHEDULS
 } from '../action/index'
@@ -74,7 +75,10 @@ const Inputschedule = ({inputschedule,dispatch,state})=>{
 
     const deleteAllShedules = (e)=>{
         e.preventDefault()
-
+        if(!window.confirm('すべてのスケジュールを削除しますか？')){
+            return
+        }
+        
         dispatch({
             type:DELETE_ALL_SCHEDULS
         })
@@ -83,15 +87,15 @@ const Inputschedule = ({inputschedule,dispatch,state})=>{
     return(
         <div className={inputschedule}>
         <h3>Schedule作成</h3>
-        <form className={classes.container}  onSubmit={(e)=> submitSchedule(e)}noValidate >     
+        <form className={classes.container}  onSubmit={(e)=> submitSchedule(e)} noValidate >     
             <DatePicker textFieldDate={classes.textFieldDate}　date={date} handleDate={(e)=>handleDate(e)}/>
             <Timepicker textFieldTime={classes.textFieldTime} time={time} handleTime={(e)=>handleTime(e)}/>
             <InputTitle inputTitle={classes.inputTitle} title={title} handleTitle={(e)=>handleTitle(e)}/>
             <InputDescription inputDescription={classes.inputDescription} description={description} handleDescription={(e)=>handleDescription(e)}/>
 
-            <br/><button>送信</button>
+            <br/><Button onClick={(e)=> submitSchedule(e)} variant="contained"  color="primary">送信</Button>
         </form>       
-        <button onClick={(e)=>deleteAllShedules(e)} style={{width:'100%',height:'30px' ,margin:'30px 0'}}>全部のスケジュールを削除する</button>
+        <Button onClick={(e)=>deleteAllShedules(e)} style={{width:'100%',height:'40px' ,margin:'30px 0'}} color="secondary" variant="contained">全部のスケジュールを削除する</Button>
         </div>
     )
 }

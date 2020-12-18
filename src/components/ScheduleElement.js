@@ -1,5 +1,7 @@
-import React from 'react'
+import React　from 'react'
 import {DELETE_SCHEDULE} from '../action/index'
+
+import Checkbox from '@material-ui/core/Checkbox';
 
 const scheduleElement = ({schedule,board,dispatch})=>{
     const month = schedule.date.substring(5,7)
@@ -11,6 +13,10 @@ const scheduleElement = ({schedule,board,dispatch})=>{
 
     const deleteSchedule = (e) =>{
         e.preventDefault()
+        if(!window.confirm(`削除しますか？ (title=${title})`)){
+            return 
+        }
+
         dispatch({
             type: DELETE_SCHEDULE,
             id: id
@@ -25,7 +31,8 @@ const scheduleElement = ({schedule,board,dispatch})=>{
                 title:{title} <br/>
                 description:{description}
             </p>
-            <input type="checkbox" onChange={(e)=>deleteSchedule(e)}/>
+            {/* <input type="checkbox"  onChange={(e)=>deleteSchedule(e)} checked={false}/> */}
+            <Checkbox  onChange={(e)=>deleteSchedule(e)}  color="default" style={{width:'20px',height:'20px'}} checked={false}/>
         </div>
     )
 }

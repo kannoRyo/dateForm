@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     padding:'12px',
     display:'flex',
     justifyContent:'space-between',
-    backgroundColor: '#61C359',
+    border: '4px solid #8bb9dd'
   }
 })
 
