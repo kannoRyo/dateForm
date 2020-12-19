@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         width:200,
     },
     inputDescription:{
-        width:300,
+        width:270,
     },
   }));
 

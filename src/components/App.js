@@ -1,4 +1,4 @@
-import React,{useReducer, useEffect} from 'react'
+import React,{useReducer, useEffect,useState} from 'react'
 import { makeStyles } from '@material-ui/core'
 
 import reducer from '../reducer/schedules'
@@ -6,11 +6,11 @@ import{ADD_SCHEDULE} from '../action/index'
 
 import Nav from './Nav'
 import ScheduleBoard from './ScheduleBoard'
-import InputSchedule from "./InputSchedule"
+import InputSchedule from "./InputSchedule.js"
 
 const dayjs = require('dayjs')
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
   root:{
     display:"grid",
     height:'100vh',
@@ -30,6 +30,7 @@ const useStyles = makeStyles({
     paddingTop:'30px',
     gridRow: "2/3",
     gridColumn: "1/2",
+    textAlign:'center',
   },
   inputSchedule:{
     paddingTop:'30px',
@@ -39,19 +40,55 @@ const useStyles = makeStyles({
   board:{
     width: '400px',
     height: '100px',
-    margin:'20px',
+    margin:'20px auto',
     borderRadius:'16px',
     padding:'12px',
     display:'flex',
     justifyContent:'space-between',
-    border: '4px solid #8bb9dd'
+    border: '4px solid #8bb9dd',
+  },
+  modal:{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper:{
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
   }
-})
+}))
 
-function App() {
+const rand = ()=> {
+  return Math.round(Math.random() * 20) - 10;
+}  
+
+const  getModalStyle = ()=> {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const  App = ()=> {
   const classes = useStyles()
   const [state, dispatch] = useReducer(reducer, [])
-  // console.log(state)
+  const [modalStyle] = useState(getModalStyle)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleToggle = (e)=>{
+    e.preventDefault()
+
+    setIsOpen(!isOpen)
+    console.log(isOpen)
+  }
 
   useEffect(()=>{
     dispatch({
@@ -62,12 +99,22 @@ function App() {
       description: 'description'
     })
   },[])
-
+  
   return (
     <div className={classes.root}>
       <Nav nav={classes.nav}/>
-      <ScheduleBoard scheduleBoard={classes.scheduleBoard}  dispatch={dispatch} state={state} board={classes.board}/>
-      <InputSchedule inputSchedule={classes.inputSchedule}  dispatch={dispatch} state={state}/>
+      <ScheduleBoard
+        scheduleBoard={classes.scheduleBoard}  
+        dispatch={dispatch} 
+        state={state} 
+        board={classes.board} 
+        paper={classes.paper} 
+        isOpen={isOpen}
+        handleToggle={(e)=> handleToggle(e)}
+        modalStyle={modalStyle}
+        modal={classes.modal}
+       />
+      <InputSchedule inputSchedule={classes.inputSchedule}  dispatch={dispatch} state={state} />
     </div>
   );
 }
