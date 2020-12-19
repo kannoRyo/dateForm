@@ -39,13 +39,17 @@ const useStyles = makeStyles((theme)=>({
   },
   board:{
     width: '400px',
-    height: '100px',
     margin:'20px auto',
     borderRadius:'16px',
     padding:'12px',
     display:'flex',
     justifyContent:'space-between',
-    border: '4px solid #8bb9dd',
+    border: '2px solid #2e2e2e',
+  },
+  content:{
+    display:'flex',
+    fontSize:'20px',
+    fontFamily:'Noto Sans JP'
   },
   modal:{
     display: 'flex',
@@ -56,10 +60,13 @@ const useStyles = makeStyles((theme)=>({
     position: 'absolute',
     width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: '2px solid #fff',
+    outline:'none',
+    borderRadius:'18px',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   }
+
 }))
 
 const rand = ()=> {
@@ -99,7 +106,7 @@ const  App = ()=> {
       description: 'description'
     })
   },[])
-  
+
   return (
     <div className={classes.root}>
       <Nav nav={classes.nav}/>
@@ -109,6 +116,7 @@ const  App = ()=> {
         state={state} 
         board={classes.board} 
         paper={classes.paper} 
+        content={classes.content}
         isOpen={isOpen}
         handleToggle={(e)=> handleToggle(e)}
         modalStyle={modalStyle}

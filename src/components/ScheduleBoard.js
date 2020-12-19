@@ -1,7 +1,7 @@
 import React from 'react'
 import ScheduleElement from './ScheduleElement'
 
-const ScheduleBoard = ({scheduleBoard,state,dispatch,board,paper,isOpen, handleToggle,modalStyle,modal})=>{
+const ScheduleBoard = ({scheduleBoard,state,dispatch,board,content,paper,isOpen, handleToggle,modalStyle,modal})=>{
     return(
         <>
         <div className={scheduleBoard} >
@@ -21,6 +21,7 @@ const ScheduleBoard = ({scheduleBoard,state,dispatch,board,paper,isOpen, handleT
                                 handleToggle={handleToggle} 
                                 modalStyle={modalStyle}
                                 modal={modal}
+                                content={content}
                             />
                         )
                     })

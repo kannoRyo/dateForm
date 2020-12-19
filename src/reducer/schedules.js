@@ -2,7 +2,8 @@ import {
     ADD_SCHEDULE,
     SORT_SCHEDULE,
     DELETE_SCHEDULE,
-    DELETE_ALL_SCHEDULS
+    DELETE_ALL_SCHEDULS,
+    ISOPEN_TOGGLE
 }from '../action/index'
 
 const sortSchedules = (state) =>{
@@ -24,7 +25,7 @@ const sortSchedules = (state) =>{
 const schedules = (state =[],action) =>{
     switch(action.type){
         case ADD_SCHEDULE:
-            const schedule = {date: action.date ,time: action.time ,title: action.title ,description: action.description}
+            const schedule = {date: action.date ,time: action.time ,title: action.title ,description: action.description, isOpen:false}
             const id = state.length === 0 ? 1 : state.length + 1
             const newState =  [...state, {id: id, ...schedule}]
             sortSchedules(newState)
