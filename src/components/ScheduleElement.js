@@ -88,9 +88,14 @@ const scheduleElement = ({schedule,board,dispatch,content,paper,isOpen,handleTog
       >
         <Fade in={schedule.isOpen}>
           <div className={paper} >
-            <h2 id="transition-modal-title">{`${month}/${date}`}の予定（{time}）</h2>
-            <p id="transition-modal-description" style={{fontSize:'20px',fontFamily:'Noto Sans JP'}}>タイトル:{title}</p>
-            <p id="transition-modal-description" style={{fontSize:'20px',fontFamily:'Noto Sans JP'}}>詳細:{description}</p>
+            <div style={{display:'flex',justifyContent:'space-around'}}>
+                <h2 id="transition-modal-title">{`${month}/${date}`}の予定（{time}）</h2>
+                <IconButton aria-label="delete" onClick={(e)=>deleteSchedule(e)}  style={{width:'40px',height:'40px',position:'relative',top:'17px'}}  >
+                <DeleteOutlineOutlinedIcon style={{fontSize:'38px'}} color="secondary"/>
+                </IconButton>            
+            </div>
+            <p id="transition-modal-description" style={{fontSize:'20px',fontFamily:'Noto Sans JP',margin:'0'}}>タイトル:{title}</p>
+            <p id="transition-modal-description" style={{fontSize:'20px',fontFamily:'Noto Sans JP',marginBottom:'0'}}>{description}</p>
           </div>
         </Fade>
       </Modal>       
