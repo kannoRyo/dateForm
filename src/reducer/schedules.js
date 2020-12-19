@@ -3,7 +3,8 @@ import {
     SORT_SCHEDULE,
     DELETE_SCHEDULE,
     DELETE_ALL_SCHEDULS,
-    ISOPEN_TOGGLE
+    HANDLE_OPEN,
+    HANDLE_CLOSE,
 }from '../action/index'
 
 const sortSchedules = (state) =>{
@@ -47,11 +48,35 @@ const schedules = (state =[],action) =>{
             return state
         case DELETE_SCHEDULE:
             state = state.filter((schedule)=>{
-                return schedule.id !== action.id
+                
             }) 
             return state
         case DELETE_ALL_SCHEDULS:
             return state=[]
+        case HANDLE_OPEN:
+            let num = 0
+            state = state.filter((schedule)=>{
+                if(schedule.id === action.id){
+                    num = action.id
+                }
+                return schedule.id !== action.id
+            })      
+            console.log(num)   
+            state.splice(num,0,{id: action.id,date: action.date ,time: action.time ,title: action.title ,description: action.description, isOpen:true})   
+            // sortSchedules(state)
+            return state
+        case HANDLE_CLOSE:
+            let num2 = 0
+            state = state.filter((schedule)=>{
+                if(schedule.id === action.id){
+                    num2 = action.id
+                }
+                return schedule.id !== action.id
+            })      
+            console.log(num2)   
+            state.splice(num2,0,{id: action.id,date: action.date ,time: action.time ,title: action.title ,description: action.description, isOpen:false})   
+            sortSchedules(state)
+            return state
         default:
             return state
     }

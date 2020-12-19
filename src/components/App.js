@@ -91,10 +91,8 @@ const  App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = (e)=>{
-    e.preventDefault()
-
+    // e.preventDefault()
     setIsOpen(!isOpen)
-    console.log(isOpen)
   }
 
   useEffect(()=>{
