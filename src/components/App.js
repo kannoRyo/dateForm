@@ -1,14 +1,11 @@
-import React,{useReducer, useEffect,useState} from 'react'
+import React,{useReducer, useState} from 'react'
 import { makeStyles } from '@material-ui/core'
 
 import reducer from '../reducer/schedules'
-import{ADD_SCHEDULE} from '../action/index'
 
 import Nav from './Nav'
 import ScheduleBoard from './ScheduleBoard'
 import InputSchedule from "./InputSchedule.js"
-
-const dayjs = require('dayjs')
 
 const useStyles = makeStyles((theme)=>({
   root:{
@@ -91,19 +88,18 @@ const  App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = (e)=>{
-    // e.preventDefault()
     setIsOpen(!isOpen)
   }
 
-  useEffect(()=>{
-    dispatch({
-      type: ADD_SCHEDULE,
-      date: dayjs().format('YYYY-MM-DD'),
-      time: '12-12',
-      title: 'title',
-      description: 'description'
-    })
-  },[])
+  // useEffect(()=>{
+  //   dispatch({
+  //     type: ADD_SCHEDULE,
+  //     date: dayjs().format('YYYY-MM-DD'),
+  //     time: '12-12',
+  //     title: 'title',
+  //     description: 'description'
+  //   })
+  // },[])
 
   return (
     <div className={classes.root}>

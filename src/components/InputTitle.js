@@ -3,7 +3,7 @@ import React from 'react'
 
 const InputTitle = ({inputTitle,title,handleTitle})=>{
     return(
-        <TextField value={title} onChange={handleTitle} id="standard-basic" label="Title" className={inputTitle}/>
+        <TextField value={title} onChange={handleTitle} label="Title" className={inputTitle} style={{marginLeft:'0',marginTop:'10px'}}/>
     )
 }
 

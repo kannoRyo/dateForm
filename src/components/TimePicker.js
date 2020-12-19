@@ -16,6 +16,7 @@ const TimePicker = ({textFieldTime,time,handleTime})=>{
           step: 300, // 5 min
         }}
         onChange={handleTime}
+        style={{marginLeft:'0',marginTop:'10px'}}
       />
     )
 }
