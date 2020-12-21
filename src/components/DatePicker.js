@@ -14,7 +14,7 @@ const DatePickers = ({textFieldDate,handleDate,date})=> {
           shrink: true,
         }}
         onChange={handleDate}
-        style={{marginLeft:'0'}}
+        style={{marginLeft:'0',marginTop:'10px'}}
       />
     </>
   );

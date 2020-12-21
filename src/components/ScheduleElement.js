@@ -16,6 +16,8 @@ const scheduleElement = ({schedule,board,dispatch,content,paper,isOpen,handleTog
     const description = schedule.description
     const id = schedule.id
 
+    console.log(id)
+
     const deleteSchedule = (e) =>{
         e.preventDefault()
         if(!window.confirm(`削除しますか？ (title=${title})`)){

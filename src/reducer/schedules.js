@@ -48,7 +48,7 @@ const schedules = (state =[],action) =>{
             return state
         case DELETE_SCHEDULE:
             state = state.filter((schedule)=>{
-                
+                return schedule.id !== action.id
             }) 
             return state
         case DELETE_ALL_SCHEDULS:
